@@ -10,9 +10,9 @@ function Posts() {
   }, [posts])
 
   const addPost = (post) => {
-    const posts = []
-    const currentlyPosts = window.localStorage.getItem("Posts")
-    window.localStorage.setItem("Posts", JSON.stringify([post]))
+    const newArray = [...posts]
+    setPosts([...posts, { subject: post.subject, content: post.content, author: post.author, tags: post.tags }])
+    window.localStorage.setItem("Posts", JSON.stringify(post))
   }
 
   return (
