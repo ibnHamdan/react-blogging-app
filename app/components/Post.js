@@ -1,20 +1,23 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
+import { PostContext } from "../contexts/PostContext"
+import { Link } from "react-router-dom"
+function Post(post) {
+  const { deletePost } = useContext(PostContext)
 
-function Post(props) {
   const deleteThePost = (e) => {
     e.preventDefault()
-    props.deletePost(props.id)
+    deletePost(post.id)
   }
   return (
     <li className="post">
       <div className="row">
         <div className="small-6 columns">
           <h2 className="post-title">
-            <a>{props.subject}</a>
+            <Link to={`postDetails/${post.id}`}>{post.subject}</Link>
           </h2>
         </div>
         <div className="small-2 columns">
-          <p>{props.author}</p>
+          <p>{post.author}</p>
         </div>
         <div className="small-2 columns">
           <p>rating</p>
