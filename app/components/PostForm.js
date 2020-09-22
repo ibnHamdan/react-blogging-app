@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
 
 function PostForm({ newPost }) {
   const [subject, setSubject] = useState("")
@@ -6,9 +7,12 @@ function PostForm({ newPost }) {
   const [author, setAuthor] = useState("")
   const [tags, setTags] = useState("")
 
+  const history = useHistory("")
+
   const handleSubmit = (e) => {
     e.preventDefault()
     newPost({ subject, content, author, tags })
+    history.push("/")
   }
 
   return (

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import Post from "./Post"
 import PostForm from "./PostForm"
+
+//import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 function Posts() {
   const initialPosts = () => JSON.parse(window.localStorage.getItem("Posts")) || ""
   const [posts, setPosts] = useState(initialPosts)
@@ -46,8 +48,8 @@ function Posts() {
             <p>No Post !!</p>
           )}
         </ul>
+        <PostForm newPost={addPost} />
       </div>
-      <PostForm newPost={addPost} />
     </div>
   )
 }
