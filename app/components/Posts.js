@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { PostContext } from "../contexts/PostContext"
-import Post from "./Post"
+import PostItem from "./PostItem"
 import { Link } from "react-router-dom"
 
 function Posts() {
@@ -23,7 +23,7 @@ function Posts() {
       <div className="box-content">
         <ul className="posts-list">
           {posts.length ? (
-            posts.map((post, index) => <Post key={index} subject={post.subject} author={post.author} rating={post.rating} id={post.id} />)
+            posts.map((post) => <PostItem key={post.id} subject={post.subject} author={post.author} rating={post.rating} id={post.id} />)
           ) : (
             <p>No Posts !!</p>
           )}
