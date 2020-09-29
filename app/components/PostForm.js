@@ -9,11 +9,19 @@ function PostForm() {
   const [tags, setTags] = useState("")
   const history = useHistory()
 
-  const { setPosts, posts } = useContext(PostContext)
+  const { dispatch } = useContext(PostContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setPosts([...posts, { subject, content, author, tags, id: Math.random(), ratign: false }])
+    dispatch({
+      type: "ADD_POST",
+      post: {
+        subject,
+        content,
+        author,
+        tags,
+      },
+    })
     history.push("/")
   }
 

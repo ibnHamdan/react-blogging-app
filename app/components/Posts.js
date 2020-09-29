@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 function Posts() {
   const { posts } = useContext(PostContext)
-
+  console.log(posts)
   return (
     <div className="row columns">
       <div className="box-header">
