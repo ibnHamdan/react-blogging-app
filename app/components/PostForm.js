@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
+import { PostContext } from "../contexts/PostContext"
+import { Link, useHistory } from "react-router-dom"
 
-function PostForm({ newPost }) {
+function PostForm() {
   const [subject, setSubject] = useState("")
   const [content, setContent] = useState("")
   const [author, setAuthor] = useState("")
   const [tags, setTags] = useState("")
+  const history = useHistory()
+
+  const { setPosts, posts } = useContext(PostContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    newPost({ subject, content, author, tags })
+    setPosts([...posts, { subject, content, author, tags, id: Math.random(), ratign: false }])
+    history.push("/")
   }
 
   return (
@@ -27,6 +33,9 @@ function PostForm({ newPost }) {
         <label htmlFor="">Tags</label>
         <input type="text" value={tags} onChange={(e) => setTags(e.target.value)} />
         <input type="submit" value="Publish" className="button info" />
+        <Link to="/" path="/">
+          <span> &lt; back</span>
+        </Link>
       </form>
     </div>
   )
